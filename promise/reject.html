@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    Promise.reject('我错了')
+        .then(
+            reason => console.log('我是resolve,', reason),
+            reason => console.log('我是reject,', reason)
+        );
+
+    Promise.reject(new Error('wrong'))
+        .then(
+            error => console.log('我是resolve,', error),
+            error => console.log('我是reject,', error)
+        )
+</script>
+</html>

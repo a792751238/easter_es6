@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //promise.prototype.catch()
+
+    const p = new Promise((resolve, reject) => {
+        resolve('success');
+    });
+
+    p
+        .then(result => {
+            console.log(result);
+            throw '断吧';
+        })
+        .catch(reason => {
+            console.log(reason);
+        })
+        .then(() => {
+            console.log('接着链');
+        }, () => {
+            console.log('没链了');
+        });
+
+    p
+        .then((result) => {
+            console.log(result);
+            return Promise.reject('断吧');
+        })
+        .catch((reason) => {
+            console.log(reason);
+        })
+        .then(() => {
+            console.log('接着链');
+        }, () => {
+            console.log('没链了');
+        });
+
+</script>
+</html>

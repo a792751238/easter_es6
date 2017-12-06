@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let p = Promise.resolve();
+    let p1 = new Promise((resolve, reject) => {
+        resolve();
+    });
+
+    console.log(p);
+    console.log(p1);
+</script>
+</html>
