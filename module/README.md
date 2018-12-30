@@ -129,6 +129,6 @@ console.log(m3.j()); //11
 
 ````
 
-[前端模块化详解(完整版)](https://segmentfault.com/a/1190000017466120#articleHeader6)
-[js模块化编程之彻底弄懂CommonJS和AMD/CMD！](https://www.cnblogs.com/chenguangliang/p/5856701.html)
-[node](http://nodejs.cn/api/modules.html)
+1. [前端模块化详解(完整版)](https://segmentfault.com/a/1190000017466120#articleHeader6)
+2. [js模块化编程之彻底弄懂CommonJS和AMD/CMD！](https://www.cnblogs.com/chenguangliang/p/5856701.html)
+3. [node](http://nodejs.cn/api/modules.html)
