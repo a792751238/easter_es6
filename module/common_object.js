@@ -22,11 +22,11 @@
 //     this.b = 2;
 // }
 //
-// Object.prototype.c = function () {
+// Class.prototype.c = function () {
 //     console.log('我是c');
 //     return this.a;
 // };
-// Object.prototype.d = function () {
+// Class.prototype.d = function () {
 //     console.log('我是d');
 //     return this.b;
 // };
