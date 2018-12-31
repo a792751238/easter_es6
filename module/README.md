@@ -6,7 +6,7 @@ var b = 2;
 function c(){}
 function d(){}
 ```
-- 后来采用了js的面向对象编程
+- 后来采用了js的面向对象的写法
 ````
 var space = {
     a: 1,
@@ -66,12 +66,12 @@ console.log(instance.d()); // 我是d //2
     }
 
     window.e = {
-        c,
-        d,
+        c:c,
+        d:d,
     }
 })(window);
 ```
-> 这一方式的代表是jquery和underscore
+> 这一方式可以做到私有变量,代表是jquery和underscore
 
 
 ### CommonJS
