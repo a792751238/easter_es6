@@ -118,7 +118,7 @@ console.log(module);
 })(jQuery)
 ```
 - 自执行函数
-> 自执行函数中()分组操作符是用来将function(){}这个函数声明转化为一种可以执行的表达式,用来绕过函数预编译阶段忽略表达式的特点
+> 自执行函数中()分组操作符是用来将function(){}这个函数声明转化为一种可以执行的表达式,单纯的function(){}不是可执行的表达式,是一个函数声明
 > ()分组操作符可以替换为其他操作符,比如 '#','+','-','!','void'......等等
 ```
 //这样写也是可以的
@@ -129,4 +129,5 @@ console.log(module);
 ```
 
 [Javascript模块化编程（一）：模块的写法](http://www.ruanyifeng.com/blog/2012/10/javascript_module.html)
+[JavaScript Module Pattern: In-Depth](http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html)
 
