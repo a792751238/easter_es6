@@ -51,6 +51,7 @@ console.log(instance.c()); //我是c //1
 console.log(instance.d()); // 我是d //2
 ````
 > 面向对象一定程度上解决了命名冲突的问题,但是js没有私有变量,暴露内部变量,外部可有对内部数据进行修改外部可以修改内部数据
+
 - 自执行函数(闭包)
 ```
 (function (window) {
@@ -97,7 +98,7 @@ console.log(module.c());
 console.log(module.d());
 console.log(module);
 ```
->可以实现模块的分离和模块的继承
+>可以实现模块的分离和模块的继承,也具有私有变量,还可以将自执行函数拆分成多个文件进行加载,但是文件的执行顺序有一定的要求,要先声明对象module
 
 - 宽放大模式
 ```
@@ -109,6 +110,7 @@ console.log(module);
     }
 })(window.module || {})
 ```
+> 可以将模块分成不同的文件,同时文件不用再考虑加载顺序不对导致module不存在的情况
 
 - 引入外部的库
 ```
@@ -127,7 +129,49 @@ console.log(module);
     $('.hello').css({ "background": a });
 }(jQuery)
 ```
+> function(){}是函数声明,声明的是一个匿名函数,而(function(){})()是一个表达式,而js在预编译阶段会解释函数声明,确会忽略表达式.所以到(function(){})的时候,该表达式会返回一个匿名函数,之后该匿名函数遇到后面的(),便会被执行
 
-[Javascript模块化编程（一）：模块的写法](http://www.ruanyifeng.com/blog/2012/10/javascript_module.html)
-[JavaScript Module Pattern: In-Depth](http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html)
+```
+    var lis = document.querySelectorAll('li');
+    for(var i=0;i<5;i++){
+        lis[i].onclick = function(){
+            alert(i); //5,5,5,5,5
+        }
+    }
+
+    //又是这个经典的题目
+    //这题最简单还是用元素属性的方式去解决,比如
+
+    for(var i=0;i<5;i++){
+        lis[i].index = i;
+        lis[i].onclick = function(){
+            alert(this.index); //0,1,2,3,4
+        }
+    }
+
+    //还有就是闭包
+    for(var i=0;i<5;i++){
+        (function(i){
+            lis[i].onclick = function(){
+                alert(i); //0,1,2,3,4
+            }
+        })(i)
+    }
+    //闭包就是在循环中执行,将i的值保存到当前作用域中,当click绑定的函数触发时,会优先从离得最近的作用域去拿变量(就近原则)
+
+    //所以,使用其他的方式将当前i值保存到自己的作用域中就行
+    for(var i=0;i<5;i++){
+        click(i);
+    }
+
+    function click(i){
+        lis[i].onclick = function(){
+            alert(i); //0,1,2,3,4
+        }
+    }
+    //这其实就跟上面的闭包有些类似了,闭包取i是从上级的匿名函数的作用域中去保存的i,而该方式就是从click函数的作用域中去取i值
+```
+
+1. [Javascript模块化编程（一）：模块的写法](http://www.ruanyifeng.com/blog/2012/10/javascript_module.html)
+2. [JavaScript Module Pattern: In-Depth](http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html)
 
