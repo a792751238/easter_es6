@@ -1,4 +1,5 @@
 ### 前端模块化
+
 - 前端早期写代码都是全局变量满天飞,这种情况会造成全局命名空间,变量冲突等问题
 ```
 var a = 1;
@@ -6,7 +7,7 @@ var b = 2;
 function c(){}
 function d(){}
 ```
-- 后来采用了js的面向对象的写法
+- 后来采用了js的对象写法
 ````
 var space = {
     a: 1,
@@ -26,6 +27,7 @@ console.log(space.b);
 console.log(space.c());
 console.log(space.d());
 ````
+
 - 亦或是挂载到原型上
 ````
 function Class() {
@@ -48,7 +50,7 @@ console.log(instance.b); //2
 console.log(instance.c()); //我是c //1
 console.log(instance.d()); // 我是d //2
 ````
-> 面向对象一定程度上解决了命名冲突的问题,但是js没有私有变量,外部可以修改内部数据
+> 面向对象一定程度上解决了命名冲突的问题,但是js没有私有变量,暴露内部变量,外部可有对内部数据进行修改外部可以修改内部数据
 - 自执行函数(闭包)
 ```
 (function (window) {
@@ -71,64 +73,60 @@ console.log(instance.d()); // 我是d //2
     }
 })(window);
 ```
-> 这一方式可以做到私有变量,代表是jquery和underscore
+> 这一方式可以做到私有变量,模块的基本写法,比如jquery
 
+- 放大模式
+```
+(function () {
+    var a = 1;
+    window.module = {
+        c: function () {
+            return a
+        },
+    }
+})();
 
-### CommonJS
-- CommonJS是一个模块规范,主要是单个文件模块和变量私有
-- CommonJS分为三部分
-  - require模块引入
-  - exports模块导出
-  - module 模块标识
-- CommonJS在node中
-````
-//m_1.js
-const a = 1;
-const b = 2;
+(function (mod) {
+    var b = 2;
+    mod.d = function () {
+        return b
+    }
+})(window.module)
 
-const c = () => {
-    return 3.14 * a;
-};
+console.log(module.c());
+console.log(module.d());
+console.log(module);
+```
+>可以实现模块的分离和模块的继承
 
-const d = () => {
-    return 3.14 * b;
-};
+- 宽放大模式
+```
+//将上面给module添加功能的函数添加个默认值
+(function (mod) {
+    var b = 2;
+    mod.d = function () {
+        return b
+    }
+})(window.module || {})
+```
 
-exports.c = c;
-exports.d = d;
+- 引入外部的库
+```
+(function ($) {
+    var a = 'red';
+    $('.hello').css({ "background": a });
+})(jQuery)
+```
+- 自执行函数
+> 自执行函数中()分组操作符是用来将function(){}这个函数声明转化为一种可以执行的表达式,用来绕过函数预编译阶段忽略表达式的特点
+> ()分组操作符可以替换为其他操作符,比如 '#','+','-','!','void'......等等
+```
+//这样写也是可以的
++function ($) {
+    var a = 'red';
+    $('.hello').css({ "background": a });
+}(jQuery)
+```
 
-//m_2.js
-const f = 3;
-const g = 4;
+[Javascript模块化编程（一）：模块的写法](http://www.ruanyifeng.com/blog/2012/10/javascript_module.html)
 
-const e = () => {
-    return f * g;
-};
-
-exports.e = e;
-
-//m_3.js
-const h = 99;
-const i = 9;
-
-const j = () => {
-    return h / i;
-};
-
-exports.j = j;
-
-//module.js
-const m1 = require('./m_1');
-const m2 = require('./m_2');
-const m3 = require('./m_3');
-
-console.log(m1.c()); //3.14
-console.log(m1.d()); //6.28
-console.log(m2.e()); //12
-console.log(m3.j()); //11
-
-````
-
-1. [前端模块化详解(完整版)](https://segmentfault.com/a/1190000017466120#articleHeader6)
-2. [js模块化编程之彻底弄懂CommonJS和AMD/CMD！](https://www.cnblogs.com/chenguangliang/p/5856701.html)
-3. [node](http://nodejs.cn/api/modules.html)
