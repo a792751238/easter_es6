@@ -135,3 +135,6 @@ ki.depends(["jquery", "underscore"], function() {
 -   [理解 requireJS-实现一个简单的模块加载器](http://www.cnblogs.com/yexiaochai/p/3961291.html)
 -   [JS 模块化编程之加载器原理](https://www.cnblogs.com/diligenceday/p/4504160.html)
 -   [RequireJS 和 AMD 规范](http://javascript.ruanyifeng.com/tool/requirejs.html)
+-   [Javascript 模块化编程（三）：require.js 的用法](http://www.ruanyifeng.com/blog/2012/11/require_js.html)
+-   [动手实现一个简单的浏览器端 js 模块加载器](https://www.jianshu.com/p/0505b1718dab)
+
