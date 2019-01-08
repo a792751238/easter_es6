@@ -1,9 +1,9 @@
 (function() {
     var vk_config = {
-        root: "./",
+        root: "./lib/",
         path: {
-            jquery: "lib/jquery.js",
-            underscore: "lib/underscore.js"
+            jquery: "jquery.js",
+            underscore: "underscore.js"
         }
     };
 
@@ -18,7 +18,7 @@
             script.setAttribute("type", "text/javascript");
             script.setAttribute("src", vk_config.root + vk_config.path[script_filename]);
             var fs = document.getElementsByTagName("script")[0];
-            fs.appendChild(script);
+            fs.parentNode.insertBefore(script, fs);
             console.log("loading:" + script_filename);
             script.onload = script.onreadystatechange = function() {
                 console.log("loaded:" + script_filename);
@@ -43,7 +43,7 @@
                     script.setAttribute("type", "text/javascript");
                     script.setAttribute("src", vk_config.root + vk_config.path[ids[i]]);
                     var fs = document.getElementsByTagName("script")[0];
-                    fs.appendChild(script);
+                    fs.parentNode.insertBefore(script, fs);
                     console.log("loading:" + ids[i]);
                     script.onload = script.onreadystatechange = function() {
                         console.log("loaded:" + ids[i]);

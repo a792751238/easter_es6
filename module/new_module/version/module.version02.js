@@ -65,6 +65,18 @@
         }
     };
 
+    var depend = function(script_name, callback) {
+        if (!script_name) return "script is indispensable";
+
+        script_queue.push({
+            name: script_name,
+            status: "start",
+            callback: callback
+        });
+
+        _queue();
+    };
+
     var depends = function(script_names, callback) {
         if (Object.prototype.toString.call(script_names) !== "[object Array]") {
             if (script_names) {
@@ -92,6 +104,7 @@
     win.ki = {
         getCache,
         setConfig,
+        depend,
         depends
     };
 })(window, document);
