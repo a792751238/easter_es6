@@ -6,7 +6,7 @@ requireJS 是一个 AMD 规范的模块加载器
 
 来实现一个 require 的实例
 目录结构如下：
-![01]()
+![01](https://github.com/easterCat/common_es6/blob/master/module/requireJs/01.png?raw=true)
 
 * 首先我们现在 require.html 中将 requireJS 引入
 
@@ -72,7 +72,7 @@ define(function () {
 });
 ```
 结构
-![02]()
+![02](https://github.com/easterCat/common_es6/blob/master/module/requireJs/02.png?raw=true)
 
 * paths定义别名
 新建js/common/date/date.js , js/common/date/format.js
@@ -93,7 +93,7 @@ require(['jquery', 'underscore', 'color', 'date/date', 'date/format'], function 
     console.log(f.format(d.date))
 });
 ```
-![03]()
+![03](https://github.com/easterCat/common_es6/blob/master/module/requireJs/03.png?raw=true)
 
 
 [avascript模块化编程（三）：require.js的用法](http://www.ruanyifeng.com/blog/2012/11/require_js.html)
