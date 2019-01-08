@@ -8,7 +8,7 @@ requireJS 是一个 AMD 规范的模块加载器
 目录结构如下：
 ![01](https://github.com/easterCat/common_es6/blob/master/module/requireJs/01.png?raw=true)
 
-* 首先我们现在 require.html 中将 requireJS 引入
+- 首先我们现在 require.html 中将 requireJS 引入
 
 <script type=”text/javascript” defer async=”true” src=”./require.js” data-main=”js/init.js”></script>
 
@@ -23,7 +23,7 @@ requireJS 是一个 AMD 规范的模块加载器
 <script type=”text/javascript” defer async=”true” src=”js/init.js”></script>
 ```
 
-* 接下来，打开 init.js
+- 接下来，打开 init.js
 
 进入文件路径的配置，其中 paths 是在 lib 下面的文件地址，baseUrl 是修改默认的根目录，shim 是指定插件引入的依赖文件否则会报错（bootstrap’JavaScript requires jquery）
 同时，由于 require 默认后面的后缀是.js 所以我们不能再加后缀，否则会报错
@@ -60,7 +60,7 @@ require(['jquery', 'underscore'], function ($, _) {
 ```
 ...有点闪眼
 
-* 注册一个模块
+- 注册一个模块
 新建js/color.js
 ```
 define(function () {
@@ -74,7 +74,7 @@ define(function () {
 结构
 ![02](https://github.com/easterCat/common_es6/blob/master/module/requireJs/02.png?raw=true)
 
-* paths定义别名
+- paths定义别名
 新建js/common/date/date.js , js/common/date/format.js
 ```
 require.config({
