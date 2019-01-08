@@ -1,4 +1,5 @@
 ### 模块加载的简单实现
+
 ```
 (function(win) {
     var baseUrl;
@@ -98,8 +99,10 @@
     };
 })(window);
 ```
-之后引入js文件
-![01]()
+
+之后引入 js 文件
+![01](https://github.com/easterCat/common_es6/blob/master/module/new_module/01.png?raw=true)
+
 ```
 //init.js
 ki.setConfig({
@@ -128,7 +131,6 @@ ki.depends(["jquery", "underscore"], function() {
     });
 });
 ```
-
 
 -   [理解 requireJS-实现一个简单的模块加载器](http://www.cnblogs.com/yexiaochai/p/3961291.html)
 -   [JS 模块化编程之加载器原理](https://www.cnblogs.com/diligenceday/p/4504160.html)
