@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8f24f3-a416-468a-bd88-6fb796750079" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/module/requireJs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/module/requireJs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -78,43 +78,6 @@
               <item name="common_es6" type="462c0819:PsiDirectoryNode" />
               <item name="module" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="common_es6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="common_es6" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="requireJs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="common_es6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="common_es6" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="requireJs" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="common_es6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="common_es6" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="requireJs" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="common_es6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="common_es6" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="requireJs" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="date" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="common_es6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="common_es6" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="requireJs" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -123,7 +86,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ht.web" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -163,17 +126,18 @@
       <workItem from="1546257639222" duration="3002000" />
       <workItem from="1546949424209" duration="694000" />
       <workItem from="1546953985972" duration="2197000" />
-      <workItem from="1546956197738" duration="1520000" />
+      <workItem from="1546956197738" duration="2138000" />
+      <workItem from="1546999241817" duration="33000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4863000" />
+    <option name="totallyTimeSpent" value="5514000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24456736" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24456736" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -185,7 +149,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3293919" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33603895" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.33522728" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -294,13 +258,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module/requireJs/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/module/requireJs/init.js" />
     <entry file="file://$PROJECT_DIR$/module/requireJs/js/color.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
