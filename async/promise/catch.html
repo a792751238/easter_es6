@@ -36,24 +36,22 @@
         //     }
         // );
 
-        // new Promise((resolve, reject) => {
-        //     resolve("我将走在错误的前面");
-        // })
-        //     .then(result => {
-        //         console.log(result); //我将走在错误的前面
-        //         return "走后面的菜";
-        //     })
-        //     .then(result => {
-        //         console.log(result);
-        //         return "比我还菜";
-        //     })
-        //     .then(result => {
-        //         console.log(result);
-        //         return '菜中菜';
-        //     })
-        //     .catch(error => {
-        //         console.log(error); //Error: 菜就不走了
-        //     });
+        new Promise((resolve, reject) => {
+            resolve("我将走在错误的前面");
+        })
+            .then(result => {
+                console.log(result); //我将走在错误的前面
+                throw new Error("我在then里面出错了,怎么办");
+                return "走后面的菜";
+            })
+            .then(result => {
+                console.log(result);
+                return "比我还菜";
+            })
+            .then(result => {
+                console.log(result);
+                return "菜中菜";
+            });
 
         // createPromise(false)
         //     .then(

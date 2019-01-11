@@ -155,7 +155,7 @@ catch 不止是 rejected 回调,当运行到 then 的 fulfilled 回调事件中�
         );
 ```
 
-catch捕获错误是层层向下传递的,错误总会被下面接触的第一个catch捕获到
+catch 捕获错误是层层向下传递的,错误总会被下面接触的第一个 catch 捕获到
 ![02](https://github.com/easterCat/common_es6/blob/master/async/promise/02.png?raw=true)
 
 ```
@@ -179,9 +179,82 @@ catch捕获错误是层层向下传递的,错误总会被下面接触的第一�
             });
 ```
 
-
 -   finally
--   all
+
+    finally 不管状态是 fulfilled 还是 rejected 都会执行,与状态无关
+
+```
+        new Promise((resolve, reject) => {
+            resolve("今天是个好日子");
+        })
+            .then(result => {
+                console.log(result); //今天是个好日子
+                throw new Error("出错了");
+            })
+            .catch(error => {
+                console.log(error); //Error: 出错了
+            })
+            .finally(() => {
+                console.log("finally"); //finally
+            });
+```
+
+-   all(array)
+
+1. all 的参数是数组,数组里面可以包含多个 promise 实例
+2. 只有数组里面的所有 promise 状态都变为 fulfilled,Promise.all 状态才会变为 fulfilled,数组中有一个是 rejected,状态就是 rejected
+3. 如果是网络请求或者文件读取等耗时任务,会按照短板原则执行,也就是只有当最后一个耗时最长的任务完成,才会执行下一步
+
+```
+//在./file文件新建01,02,03三个txt
+const fs = require("fs");
+const path = require("path");
+
+Promise.all([create_promise(path.resolve(__dirname, "./file/01.txt")), create_promise(path.resolve(__dirname, "./file/02.txt")), create_promise(path.resolve(__dirname, "./file/03.txt"))]).then(result => {
+    console.log(result);
+});
+
+function create_promise(path) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(path, "utf-8", (error, data) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(data);
+            }
+        });
+    });
+}
+```
+
+![03](https://github.com/easterCat/common_es6/blob/master/async/promise/03.png?raw=true)
+
 -   race
+
+race 总体写法更 all 方法类似,只是 race 的执行是长板原则,按照最长的那个板子来进行状态切换,多个请求只要有一个由 pending->fulfilled,那么整体的状态也改变了
+
+```
+const fs = require("fs");
+const path = require("path");
+
+Promise.race([create_promise(path.resolve(__dirname, "./file/01.txt")), create_promise(path.resolve(__dirname, "./file/02.txt")), create_promise(path.resolve(__dirname, "./file/03.txt"))]).then(result => {
+    console.log(result);
+});
+
+function create_promise(path) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(path, "utf-8", (error, data) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(data);
+            }
+        });
+    });
+}
+```
+
+![04](https://github.com/easterCat/common_es6/blob/master/async/promise/04.png?raw=true)
+
 -   resolve
 -   reject
