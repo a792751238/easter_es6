@@ -1,10 +1,4 @@
-[翻译 Promises/A+规范](http://www.ituring.com.cn/article/66566)
-
-[深入 Promise(一)——Promise 实现详解](https://zhuanlan.zhihu.com/p/25178630)
-
-[Promise 对象](http://es6.ruanyifeng.com/?search=in&x=11&y=13#docs/promise)
-
-#### promise
+## promise
 
 promise 是 es6 提出的一个异步解决方案,比传统回调事件的写法更加合理更加强大,主要还是优雅
 
@@ -23,9 +17,9 @@ console.log(p);
 
 ![01](https://github.com/easterCat/common_es6/blob/master/async/promise/01.png?raw=true)
 
-#### 方法
+## 方法
 
--   then(fulfilled_callback,[,rejected_callback])
+-   **then(fulfilled_callback,[,rejected_callback])**
 
 then 方法中包含两个参数,第一个参数(必须,但是不限定是函数)是 fulfilled 的回调函数,第二个参数(可选)是 rejected 的回调函数
 
@@ -87,7 +81,7 @@ then 方法返回的是一个全新的 promises 实例,与之前状态改变的�
         });
 ```
 
--   catch
+-   **catch**
 
 Promise.prototype.catch 方法是.then(null, rejection)或.then(undefined, rejection)
 
@@ -179,7 +173,7 @@ catch 捕获错误是层层向下传递的,错误总会被下面接触的第一�
             });
 ```
 
--   finally
+-   **finally**
 
     finally 不管状态是 fulfilled 还是 rejected 都会执行,与状态无关
 
@@ -199,7 +193,7 @@ catch 捕获错误是层层向下传递的,错误总会被下面接触的第一�
             });
 ```
 
--   all(array)
+-   **all(array)**
 
 1. all 的参数是数组,数组里面可以包含多个 promise 实例
 2. 只有数组里面的所有 promise 状态都变为 fulfilled,Promise.all 状态才会变为 fulfilled,数组中有一个是 rejected,状态就是 rejected
@@ -229,7 +223,7 @@ function create_promise(path) {
 
 ![03](https://github.com/easterCat/common_es6/blob/master/async/promise/03.png?raw=true)
 
--   race
+-   **race**
 
 race 总体写法更 all 方法类似,只是 race 的执行是长板原则,按照最长的那个板子来进行状态切换,多个请求只要有一个由 pending->fulfilled,那么整体的状态也改变了
 
@@ -256,5 +250,93 @@ function create_promise(path) {
 
 ![04](https://github.com/easterCat/common_es6/blob/master/async/promise/04.png?raw=true)
 
--   resolve
--   reject
+-   **resolve**
+
+resolve 是将现有对象转化为 promise 对象
+
+1. 参数是一个 promise 实例,resolve 将不做任何修改,直接返回
+
+```
+        console.log(
+            new Promise((resolve, reject) => {
+                resolve("今日是个好日子");
+            })
+        ); //Promise {<resolved>: "今日是个好日子"}
+
+        console.log(
+            Promise.resolve(
+                new Promise((resolve, reject) => {
+                    resolve("今日是个好日子");
+                })
+            )
+        ); //Promise {<resolved>: "今日是个好日子"}
+```
+
+2. 参数是一个 thenable 对象,会将这个对象转为 Promise 对象，然后就立即执行 thenable 对象的 then 方法
+
+```
+        var thenable = {
+            then: function(resolve, reject) {
+                resolve("今天是个好日子");
+            }
+        };
+
+        var p = Promise.resolve(thenable);
+        p.then(value => console.log(value)); //今天是个好日子
+```
+
+3. 参数不是带有 then 的对象,会返回一个新的 promise 对象,其状态直接是 resolved 状态
+
+```
+        var p = Promise.resolve([1, 2, 3, 4, 5]);
+
+        p.then(value => console.log(value)); //[1,2,3,4,5]
+```
+
+4. 无参数,返回一个状态是 resolved 状态的 promise 对象
+
+```
+        var p = Promise.resolve();
+        p.then(value => console.log(value)); //undefiend
+```
+
+-   **reject**
+
+reject()会返回一个新的 promise 实例,状态是 rejected
+
+```
+        var p1 = Promise.reject("我错了");
+
+        var p2 = new Promise((resolve, reject) => {
+            reject("绝对错了");
+        });
+
+        p1.catch(error => console.log(error)); //我错了
+        p2.catch(error => console.log(error)); //绝对错了
+```
+
+reject()方法的参数不会抓取抛出的错误,而是直接将参数整体传递给后面的方法当作参数
+
+```
+        var thenable = {
+            then: function(resolve, reject) {
+                reject("出错了");
+            }
+        };
+
+        Promise.reject(thenable).catch(error => {
+            console.log(error); //{then: ƒ}
+        });
+```
+
+[翻译 Promises/A+规范](http://www.ituring.com.cn/article/66566)
+
+[深入 Promise(一)——Promise 实现详解](https://zhuanlan.zhihu.com/p/25178630)
+
+[Promise 对象](http://es6.ruanyifeng.com/?search=in&x=11&y=13#docs/promise)
+
+[透彻掌握 Promise 的使用，读这篇就够了](https://www.jianshu.com/p/fe5f173276bd)
+
+[大白话讲解 Promise（一）](http://www.cnblogs.com/lvdabao/p/es6-promise-1.html)
+
+[JS 中的 Promise 的 then 方法做了啥?](https://segmentfault.com/q/1010000006627403)
