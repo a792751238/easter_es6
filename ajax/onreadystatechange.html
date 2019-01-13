@@ -49,15 +49,23 @@
     <script>
         var xhr = new XMLHttpRequest();
 
-        xhr.open("GET", "http://127.0.0.1:3333/get_money", true);
+        xhr.open("POST", "http://127.0.0.1:3333/add", true);
+
+        var body = new FormData();
+
+        body.append("oid", 8029794);
+        body.append("type", 1);
+        body.append("message", "本大王来巡山了");
+        body.append("plat", 1);
+        body.append("jsonp", "jsonp");
+        body.append("csrf", "af15b2a3a0e64a2ea304f885bea6bfd1");
+
+        xhr.send(body);
 
         xhr.onreadystatechange = function() {
-            console.log("readyState=>", xhr.readyState);
-            console.log("status=>", xhr.status);
-            console.log(xhr.response);
-            console.log(xhr.responseText);
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                console.log(xhr.response);
+            }
         };
-
-        xhr.send();
     </script>
 </html>

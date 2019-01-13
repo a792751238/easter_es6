@@ -2,7 +2,7 @@
 
 使用 XMLHttpRequest 对象可以和服务器进行交互,可以获取到数据,而无需让整个页面进行刷新.这样 web 页面可以做到只更新局部页面,降低了对用户操作的影响.
 
-XMLHttpRequest 对象可以用于获取各种类型的数据,而不止是 xml,还支持 http 以外的协议
+XMLHttpRequest 对象可以用于获取各种类型的数据,而不止是 xml,还支持 JSON，HTML 或者纯文本
 
 ## 本地服务器
 
@@ -120,6 +120,57 @@ response.writeHead(404, { "Content-type": "text/html;charset=utf8" });
 
 ![04](https://github.com/easterCat/common_es6/blob/master/ajax/04.png?raw=true)
 
+### open 和 send
+
+-   [open(method,url,async,user,password)](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/open)
+    1. XMLHttpRequest 的 http 或者 https 的请求必须通过 open 来发起
+    2. 必须要在 send 之前调用
+    3. method('GET','POST','PUT','DELETE').url 请求地址.async 是否开启同步请求,默认 true,执行异步操作.用户名用于认证,默认 null.密码用于认证,默认 null
+    4. 同步的请求会阻塞 js 执行,不需要调用 onreadystatechange 事件监听器
+-   sendRequestHeader(header,value)
+    1. 在 open() 方法和 send() 之间调用
+    2. 多次对同一个请求头赋值，只会生成一个合并了多个值的请求头
+-   [send()](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/send)
+    1. 用于发送 http 请求,异步请求会在请求发送后立即返回,如果是同步请求,会在响应到达后才返回
+    2. send()接收一个可选参数,作为请求主体.如果请求方法是 GET 或 HEAD,则将请求主体设为 null
+    3. 发送二进制内容的最佳方法是结合 ArrayBufferView 或者[Blobs](https://developer.mozilla.org/en-US/docs/Web/API/Blob)
+    4. 参数['null','ArrayBuffer','ArrayBufferView','Blob','Document','FormData','DOMString']
+
+一个小案例
+
+通过请求发送一个留言,通过 FormData 发送一个表单数据
+
+![05](https://github.com/easterCat/common_es6/blob/master/ajax/05.png?raw=true)
+
+```
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "http://127.0.0.1:3333/add", true);
+
+        var body = new FormData();
+
+        body.append("oid", 8029794);
+        body.append("type", 1);
+        body.append("message", "本大王来巡山了");
+        body.append("plat", 1);
+        body.append("jsonp", "jsonp");
+        body.append("csrf", "af15b2a3a0e64a2ea304f885bea6bfd1");
+
+        xhr.send(body);
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                console.log(xhr.response);
+            }
+        };
+```
+
+为了安全，跨域 XHR 对象有一些限制：
+
+1. 不能使用 setRequestHeader() 设置自定义头部
+2. 不能发送和接收 cookie
+3. 调用 getAllResponseHeaders() 方法总会返回空字符串
+
 #### 属性
 
 -   responseURL
@@ -134,19 +185,7 @@ response.writeHead(404, { "Content-type": "text/html;charset=utf8" });
 -   abort()
 -   getAllReponseHeaders()
 -   getResponseHeader()
--   [open(method,url,async,user,password)](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/open)
-    1. method('GET','POST','PUT','DELETE')
-    2. url 请求地址
-    3. async 是否开启同步请求,默认 true,执行异步操作
-    4. 用户名用于认证,默认 null
-    5. 密码用于认证,默认 null
 -   overrideMimeType()
--   [send()](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/send)
-    1. 用于发送 http 请求,异步请求会在请求发送后立即返回,如果是同步请求,会在响应到达后才返回
-    2. send()接收一个可选参数,作为请求主体.如果请求方法是 GET 或 HEAD,则将请求主体设为 null
-    3. 发送二进制内容的最佳方法是结合 ArrayBufferView 或者[Blobs](https://developer.mozilla.org/en-US/docs/Web/API/Blob)
-    4. 参数['null','ArrayBuffer','ArrayBufferView','Blob','Document','FormData','DOMString']
--   setRequestHeader()
 
 #### 事件
 
@@ -158,6 +197,8 @@ response.writeHead(404, { "Content-type": "text/html;charset=utf8" });
 -   timeout
 -   loadend
 -   readystatechange
+
+[FormData](https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/Using_FormData_Objects)
 
 [构造方法 XMLHttpRequest()](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)
 
