@@ -38,7 +38,7 @@ function get_money(request, response) {
 ### status/readyState/onreadystatechange
 
 -   **onreadystatechange**
-    -   1. 当 readyState 值变化时,会调用相应的处理函数
+    -   当 readyState 值变化时,会调用相应的处理函数
 -   **readyState**
     -   0=>UNSENT=>XMLHttpRequest 代理被创建，但尚未调用 open() 方法
     -   1=>OPENED=>open() 方法已经被调用,可以通过 setRequestHeader() 方法来设置请求的头部， 可以调用 send() 方法来发起请求
@@ -97,7 +97,7 @@ response.writeHead(404, { "Content-type": "text/html;charset=utf8" });
     1. 返回一个 DOMString,包含对文本请求的响应,请求不成功或者请求尚未发送,返回 null
     2. 在请求完成之前将会得到部分属性
     3. 如果值不是 text 或者 string,responseType 将会抛出 InvalidStateError 异常
--   responseType
+-   **responseType**
     1. responseType 属性是一个枚举类型的属性,返回响应数据的类型
     2. 设置为一个空字符串,它将使用默认的 text 类型
     3. 同步请求设置 responseType 会抛出一个 InvalidAccessError 的异常
@@ -127,7 +127,7 @@ response.writeHead(404, { "Content-type": "text/html;charset=utf8" });
     2. 必须要在 send 之前调用
     3. method('GET','POST','PUT','DELETE').url 请求地址.async 是否开启同步请求,默认 true,执行异步操作.用户名用于认证,默认 null.密码用于认证,默认 null
     4. 同步的请求会阻塞 js 执行,不需要调用 onreadystatechange 事件监听器
--   sendRequestHeader(header,value)
+-   **sendRequestHeader(header,value)**
     1. 在 open() 方法和 send() 之间调用
     2. 多次对同一个请求头赋值，只会生成一个合并了多个值的请求头
 -   [send()](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/send)
