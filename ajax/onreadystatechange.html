@@ -8,15 +8,43 @@
     </head>
     <body></body>
     <script>
+        // var xhr = new XMLHttpRequest();
+
+        // xhr.open("GET", "http://127.0.0.1:3333/get_money", true);
+
+        // xhr.onreadystatechange = function() {
+        //     // console.log("readyState=>", xhr.readyState);
+        //     // console.log("status=>", xhr.status);
+        //     // console.log(xhr.response);
+        //     // console.log(xhr.responseText);
+        //     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        //     }
+        // };
+
+        // xhr.send();
+    </script>
+
+    <script>
         var xhr = new XMLHttpRequest();
+
+        console.log("open调用前的status", xhr.status); // open调用前的status 0
+        console.log("open调用前的readyState", xhr.readyState); //open调用前的readyState 0
 
         xhr.open("GET", "http://127.0.0.1:3333/get_money", true);
 
-        xhr.onreadystatechange = function() {
-            console.log("readyState=>", xhr.readyState);
-            console.log("status=>", xhr.status);
-        };
+        console.log("open调用后的status", xhr.status); //open调用后的status 0
+        console.log("open调用后的readyState", xhr.readyState); //open调用后的readyState 1
 
         xhr.send();
+
+        console.log("send调用后的status", xhr.status); //send调用后的status 0
+        console.log("send调用后的readyState", xhr.readyState); //send调用后的readyState 1
+
+        xhr.onreadystatechange = function() {
+            console.log(xhr.status); //2,3,4
+            console.log(xhr.readyState); //200,200,200
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            }
+        };
     </script>
 </html>

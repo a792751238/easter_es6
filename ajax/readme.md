@@ -1,19 +1,23 @@
-## XMLHttpRequest
 
-使用 XMLHttpRequest 对象可以和服务器进行交互,可以获取到数据,而无需让整个页面进行刷新.这样 web 页面可以做到只更新局部页面,降低了对用户操作的影响.
-
-XMLHttpRequest 对象可以用于获取各种类型的数据,而不止是 xml,还支持 http 以外的协议
 
 #### 属性
 
--   onreadystatechange 当 readyState 值变化时,会调用相应的处理函数
--   readyState
--   response
--   responseText
+-   **onreadystatechange**
+    1. 当 readyState 值变化时,会调用相应的处理函数
+
+-   **response**
+    1. 返回响应的正文
+    2. 返回的类型可以是 ArrayBuffer,Blob,Document,Object,DOMString.这取决于 responseType 属性
+    3. 请求尚未完成或未成功,则取值是 null
+    4. 读取文本数据时如果将 responseType 的值设置成 text 或空字符串且当请求状态还在是 readyState (3) 时,response 包含到目前为止该请求已经取得的内容
+-   **responseText**
+    1. 返回一个 DOMString,包含对文本请求的响应,请求不成功或者请求尚未发送,返回 null
+    2. 在请求完成之前将会得到部分属性
+    3. 如果值不是 text 或者 string,responseType 将会抛出 InvalidStateError 异常
 -   responseType
 -   responseURL
 -   responseXML
--   status
+
 -   statusText
 -   timeout
 -   upload
