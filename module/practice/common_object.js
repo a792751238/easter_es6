@@ -16,7 +16,6 @@
 // console.log(space.c());
 // console.log(space.d());
 
-
 // function Class() {
 //     this.a = 1;
 //     this.b = 2;
@@ -37,23 +36,22 @@
 // console.log(instance.c());
 // console.log(instance.d());
 
-
-(function (window) {
+(function(window) {
     let a = 1;
     let b = 2;
 
     function c() {
-        console.log('我是c');
+        console.log("我是c");
         return a;
     }
 
     function d() {
-        console.log('我是d');
+        console.log("我是d");
         return b;
     }
 
     window.e = {
         c,
-        d,
-    }
+        d
+    };
 })(window);
