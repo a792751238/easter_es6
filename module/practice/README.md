@@ -192,7 +192,7 @@ console.log(module);
 
 ### cmd 和 amd
 
-在浏览器中,由于不想 nodejs 一样支持 commonjs,于是诞生了两种模块化方式,cmd 和 amd
+在浏览器中,由于不像 nodejs 一样支持 commonjs,于是诞生了两种模块化方式,cmd 和 amd
 
 -   **cmd**
 
@@ -260,4 +260,4 @@ console.log(m3.j()); //11
 
 1. [前端模块化详解(完整版)](https://segmentfault.com/a/1190000017466120#articleHeader6)
 2. [js 模块化编程之彻底弄懂 CommonJS 和 AMD/CMD！](https://www.cnblogs.com/chenguangliang/p/5856701.html)
-3. [node](http://nodejs.cn/api/modules.html)
+3. [node 官方文档](http://nodejs.cn/api/modules.html)
