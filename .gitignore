@@ -14,3 +14,6 @@ yarn-error.log*
 .ntvs
 *.njsproj
 *.sln
+package-lock.json
+.idea/workspace.xml
+.idea/workspace.xml
