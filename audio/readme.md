@@ -45,7 +45,7 @@
     }
 ```
 
-> uration 在 autoplay 下回失效,返回 NaN
+> duration 在 autoplay 下回失效,返回 NaN
 
 [MDN->audio](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio)
 
