@@ -20,9 +20,12 @@
 18. PHP Debug
 19. PHP Intelephense
 20. PHP IntelliSense
-21. Prettier - Code formatter
-22. Prettify JSON
-23. Vetur
-24. VS Color Picker
-25. Vue VS Code Extension Pack
-26. Vue VSCode Snippets
+21. PHP DocBlocker
+22. Prettier - Code formatter
+23. Prettify JSON
+24. Vetur
+25. VS Color Picker
+26. Vue VS Code Extension Pack
+27. Vue VSCode Snippets
+28. Document This
+29. GitLens — Git supercharged
