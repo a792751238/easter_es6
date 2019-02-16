@@ -1,4 +1,11 @@
-#### audio 在浏览器中自动播放
+## audio 在浏览器中自动播放
+
+#### autoplay 属性
+
+autoplay 属性规定一旦音频就绪马上开始播放。
+如果设置了该属性，音频将自动播放。
+
+#### 使用 autoplay 属性进行播放
 
 ```
     //使用autoplay属性
@@ -19,7 +26,29 @@
 
 ```
 
-#### 判断音频是否加载完成?
+#### oncanplaythrough 事件
+
+oncanplaythrough 事件在视频/音频（audio/video）可以正常播放且无需停顿和缓冲时触发。
+在视频/音频（audio/video）加载过程中，事件的触发顺序如下:
+
+1. onloadstart
+2. ondurationchange
+3. onloadedmetadata
+4. onloadeddata
+5. onprogress
+6. oncanplay
+7. oncanplaythrough
+
+```
+//1
+<audio oncanplaythrough="event">
+//2
+audio.oncanplaythrough=function(){event()};
+//3
+audio.addEventListener("canplaythrough", event;
+```
+
+#### 监听 canplaythrough 事件进行播放
 
 ```
     // 监听加载事件执行play方法
@@ -32,6 +61,7 @@
       audio.setAttribute("src", src);
       body.appendChild(audio);
 
+      //判断音频是否加载完成?
       audio.addEventListener(
         "canplaythrough",
         function() {
@@ -46,6 +76,14 @@
 ```
 
 > duration 在 autoplay 下回失效,返回 NaN
+
+#### JS 报错:Uncaught (in promise) DOMException: play() failed because the user didn't interact with the document first.
+
+解决方法
+
+1. 在 chrome 浏览器中输入 chrome://flags/#autoplay-policy
+2. 在 Autoplay policy 下拉中设置无需用户手势
+3. 重启 chrome
 
 [MDN->audio](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio)
 
