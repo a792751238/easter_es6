@@ -79,11 +79,17 @@ audio.addEventListener("canplaythrough", event;
 
 #### JS 报错:Uncaught (in promise) DOMException: play() failed because the user didn't interact with the document first.
 
+[https://goo.gl/xX8pDD](https://goo.gl/xX8pDD)这里是官方给出的解释,chrome66 之后反正是不能用了
+
 解决方法
 
 1. 在 chrome 浏览器中输入 chrome://flags/#autoplay-policy
 2. 在 Autoplay policy 下拉中设置无需用户手势
 3. 重启 chrome
+
+或
+
+1. chrome.exe --disable-features=AutoplayIgnoreWebAudio
 
 [MDN->audio](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio)
 
