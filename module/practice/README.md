@@ -1,6 +1,6 @@
-### 前端模块化
+## 前端模块化
 
--   前端早期写代码都是全局变量满天飞,这种情况会造成全局命名空间,变量冲突等问题
+#### 前端早期写代码都是全局变量满天飞,这种情况会造成全局命名空间,变量冲突等问题
 
 ```
 var a = 1;
@@ -9,7 +9,7 @@ function c(){}
 function d(){}
 ```
 
--   后来采用了 js 的对象写法
+#### 后来采用了 js 的对象写法
 
 ```
 var space = {
@@ -31,7 +31,7 @@ console.log(space.c());
 console.log(space.d());
 ```
 
--   亦或是挂载到原型上(构造函数)
+#### 亦或是挂载到原型上(构造函数)
 
 ```
 function Class() {
@@ -57,7 +57,7 @@ console.log(instance.d()); // 我是d //2
 
 > 面向对象一定程度上解决了命名冲突的问题,但是 js 没有私有变量,暴露内部变量,外部可有对内部数据进行修改外部可以修改内部数据
 
--   自执行函数(闭包)
+#### 自执行函数(闭包)
 
 ```
 (function (window) {
@@ -83,7 +83,7 @@ console.log(instance.d()); // 我是d //2
 
 > 这一方式可以做到私有变量,模块的基本写法,比如 jquery
 
--   放大模式
+#### 放大模式
 
 ```
 (function () {
@@ -109,7 +109,7 @@ console.log(module);
 
 > 可以实现模块的分离和模块的继承,也具有私有变量,还可以将自执行函数拆分成多个文件进行加载,但是文件的执行顺序有一定的要求,要先声明对象 module
 
--   宽放大模式
+#### 宽放大模式
 
 ```
 //将上面给module添加功能的函数添加个默认值
@@ -123,7 +123,7 @@ console.log(module);
 
 > 可以将模块分成不同的文件,同时文件不用再考虑加载顺序不对导致 module 不存在的情况
 
--   引入外部的库
+- 引入外部的库
 
 ```
 (function ($) {
@@ -132,9 +132,9 @@ console.log(module);
 })(jQuery)
 ```
 
--   自执行函数
-    > 自执行函数中()分组操作符是用来将 function(){}这个函数声明转化为一种可以执行的表达式,单纯的 function(){}不是可执行的表达式,是一个函数声明
-    > ()分组操作符可以替换为其他操作符,比如 '#','+','-','!','void'......等等
+- 自执行函数
+  > 自执行函数中()分组操作符是用来将 function(){}这个函数声明转化为一种可以执行的表达式,单纯的 function(){}不是可执行的表达式,是一个函数声明
+  > ()分组操作符可以替换为其他操作符,比如 '#','+','-','!','void'......等等
 
 ```
 //这样写也是可以的
@@ -190,16 +190,17 @@ console.log(module);
 1. [Javascript 模块化编程（一）：模块的写法](http://www.ruanyifeng.com/blog/2012/10/javascript_module.html)
 2. [JavaScript Module Pattern: In-Depth](http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html)
 
-### cmd 和 amd
+## cmd 和 amd
 
 在浏览器中,由于不像 nodejs 一样支持 commonjs,于是诞生了两种模块化方式,cmd 和 amd
 
--   **cmd**
+#### cmd
 
     1. define(factory)定义模块=>define(callback(require,exports,module))
     2. 懒加载,在 require 时候才会加载模块
 
--   **amd**
+#### amd
+
     1. define(module,callback)定义模块,require(module,callback)加载模块
     2. 预加载,在定义模块的时候就提前加载好所有模块
 
@@ -209,14 +210,14 @@ console.log(module);
 
 [Common Module Definition / draft](https://github.com/cmdjs/specification/blob/master/draft/module.md)
 
-### CommonJS
+## CommonJS
 
--   CommonJS 是一个模块规范,主要是单个文件模块和变量私有
--   CommonJS 分为三部分
-    -   require 模块引入
-    -   exports 模块导出
-    -   module 模块标识
--   CommonJS 在 node 中
+- CommonJS 是一个模块规范,主要是单个文件模块和变量私有
+- CommonJS 分为三部分
+  - require 模块引入
+  - exports 模块导出
+  - module 模块标识
+- CommonJS 在 node 中
 
 ```
 //m_1.js
