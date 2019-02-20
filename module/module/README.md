@@ -205,18 +205,6 @@ console.log(module);
 
 ## cmd 和 amd
 
-在浏览器中,由于不像 nodejs 一样支持 commonjs,于是诞生了两种模块化方式,cmd 和 amd
-
-#### cmd
-
-    1. define(factory)定义模块=>define(callback(require,exports,module))
-    2. 懒加载,在 require 时候才会加载模块
-
-#### amd
-
-    1. define(module,callback)定义模块,require(module,callback)加载模块
-    2. 预加载,在定义模块的时候就提前加载好所有模块
-
 ## RequireJs
 
 ## CommonJs
