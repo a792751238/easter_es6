@@ -101,7 +101,7 @@
 ```
 
 之后引入 js 文件
-![01](https://github.com/easterCat/common_es6/blob/master/module/new_module/01.png?raw=true)
+![01](https://github.com/easterCat/common_es6/blob/master/module/new_require/01.png?raw=true)
 
 ```
 //init.js

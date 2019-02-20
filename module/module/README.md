@@ -1,6 +1,6 @@
 ## 前端模块化
 
-#### 前端早期写代码都是全局变量满天飞,这种情况会造成全局命名空间,变量冲突等问题
+#### 前端早期写代码都是全局变量满天飞,这种情况会造成全局命名空间污染,变量冲突等问题
 
 ```
 var a = 1;
@@ -9,7 +9,7 @@ function c(){}
 function d(){}
 ```
 
-#### 后来采用了 js 的对象写法
+#### 后来采用了 js 的对象写法，添加一个单独的命名空间
 
 ```
 var space = {
@@ -30,6 +30,8 @@ console.log(space.b);
 console.log(space.c());
 console.log(space.d());
 ```
+
+> 这样就把变量挂载到 space 上了，而不是全局 window 上
 
 #### 亦或是挂载到原型上(构造函数)
 
@@ -74,11 +76,25 @@ console.log(instance.d()); // 我是d //2
         return b;
     }
 
-    window.e = {
+    window.module = {
         c:c,
         d:d,
     }
 })(window);
+
+//或者
+var module = (function(){
+    let a = 1;
+    ...
+    function c(){
+        ...
+    }
+    ...
+    return {
+        a:a,
+        c:c
+    }
+})()
 ```
 
 > 这一方式可以做到私有变量,模块的基本写法,比如 jquery
@@ -187,9 +203,6 @@ console.log(module);
     //这其实就跟上面的闭包有些类似了,闭包取i是从上级的匿名函数的作用域中取保存的i,而该方式就是从click函数的作用域中去取i值
 ```
 
-1. [Javascript 模块化编程（一）：模块的写法](http://www.ruanyifeng.com/blog/2012/10/javascript_module.html)
-2. [JavaScript Module Pattern: In-Depth](http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html)
-
 ## cmd 和 amd
 
 在浏览器中,由于不像 nodejs 一样支持 commonjs,于是诞生了两种模块化方式,cmd 和 amd
@@ -204,8 +217,14 @@ console.log(module);
     1. define(module,callback)定义模块,require(module,callback)加载模块
     2. 预加载,在定义模块的时候就提前加载好所有模块
 
+## RequireJs
+
+## CommonJs
+
+[浏览器加载 CommonJS 模块的原理与实现](http://www.ruanyifeng.com/blog/2015/05/commonjs-in-browser.html)
+[Javascript 模块化编程（一）：模块的写法](http://www.ruanyifeng.com/blog/2012/10/javascript_module.html)
+[JavaScript Module Pattern: In-Depth](http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html)
 [Seajs 与 RequireJS 的异同](https://github.com/seajs/seajs/issues/277)
-
 [AMD 和 CMD 的区别有哪些?](https://www.zhihu.com/question/20351507)
-
 [Common Module Definition / draft](https://github.com/cmdjs/specification/blob/master/draft/module.md)
+[js-module-7day](http://huangxuan.me/js-module-7day)
