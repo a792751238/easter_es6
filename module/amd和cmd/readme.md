@@ -76,7 +76,7 @@ define(function(require, exports, module) {
 
 这是 seajs 对象上绑定的属性和方法
 
-![seajs01]()
+![seajs01](https://github.com/easterCat/common_es6/blob/master/module/amd%E5%92%8Ccmd/img/seajs01.png?raw=true)
 
 color.js
 
@@ -159,7 +159,7 @@ sea.js.html
 ```
 
 目录结构
-![seajs02]()
+![seajs02](https://github.com/easterCat/common_es6/blob/master/module/amd%E5%92%8Ccmd/img/seajs02.png?raw=true)
 
 #### 3.8 seajs 引入其他插件或库
 
@@ -190,6 +190,6 @@ if (typeof define === "function") {
 }
 ```
 
-[Common Module Definition](https://github.com/cmdjs/specification/blob/master/draft/module.md)
-[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)
-[require.js 基本使用](https://www.cnblogs.com/mybilibili/p/6773952.html)
+- [Common Module Definition](https://github.com/cmdjs/specification/blob/master/draft/module.md)
+- [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)
+- [require.js 基本使用](https://www.cnblogs.com/mybilibili/p/6773952.html)
