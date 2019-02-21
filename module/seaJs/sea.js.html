@@ -6,9 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>sea.js</title>
   </head>
-  <body>
+  <body id="bg">
     <button id="change">点我我变色</button>
   </body>
-  <script src="./sea.js"></script>
-  <script src="./init.js"></script>
+  <script src="./lib/sea.js"></script>
+  <script>
+    seajs.config({
+      alias: {
+        underscore: "underscore.js",
+        init: "./src/init.js",
+        color: "./src/color.js"
+      }
+    });
+
+    seajs.use(["underscore", "init"], function(u, init) {
+      init.start();
+    });
+  </script>
 </html>
