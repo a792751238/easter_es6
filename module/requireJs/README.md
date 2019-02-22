@@ -96,4 +96,4 @@ require(['jquery', 'underscore', 'color', 'date/date', 'date/format'], function 
 ![03](https://github.com/easterCat/common_es6/blob/master/module/requireJs/03.png?raw=true)
 
 
-[avascript模块化编程（三）：require.js的用法](http://www.ruanyifeng.com/blog/2012/11/require_js.html)
+[javascript模块化编程（三）：require.js的用法](http://www.ruanyifeng.com/blog/2012/11/require_js.html)
